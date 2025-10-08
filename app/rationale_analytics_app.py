@@ -156,7 +156,7 @@ no_df  = flt[flt["answer_yes_no"]=="No"]  if "answer_yes_no" in flt.columns else
 # ---------------------
 # Header & KPIs
 # ---------------------
-st.title("🧠 Rationale Analytics For Response Generated Through Qwen Model")
+st.title("Rationale Analytics For Response Generated Through Qwen Model")
 
 col1, col2, col3, col4 = st.columns(4)
 col1.metric("Rows", len(flt))
