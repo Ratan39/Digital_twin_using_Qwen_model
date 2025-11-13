@@ -16,7 +16,7 @@ st.set_page_config(
     layout="wide",
 )
 
-st.title("🎓 Graduate Program Interest Dashboard")
+st.title("Graduate Program Interest Dashboard")
 
 st.markdown(
     """
@@ -200,7 +200,7 @@ tab_overview, tab_deep, tab_rational = st.tabs(
 # 1) Overview Tab
 # ---------------------------------
 with tab_overview:
-    st.subheader("📌 Overview")
+    st.subheader("Overview")
 
     # KPI cards
     col1, col2, col3, col4, col5 = st.columns(5)
@@ -357,7 +357,7 @@ This shows, for each program, how many Yes vs No responses it received in the cu
 # 2) Deeper Insights Tab
 # ---------------------------------
 with tab_deep:
-    st.subheader("🧠 Deeper Insights")
+    st.subheader("Deeper Insights")
 
     # Confusion matrix (interest vs similarity threshold)
     st.markdown("#### Confusion Matrix (Interest vs Similarity Threshold)")
@@ -618,7 +618,7 @@ with tab_deep:
         # --- Recommendations / Next Steps for Audience ---
         # --- Recommendations / Next Steps for Audience ---
     st.markdown("---")
-    st.markdown("### 🎯 Recommendations & Next Steps")
+    st.markdown("### Recommendations & Next Steps")
 
     st.markdown(
         """
@@ -651,7 +651,7 @@ with tab_deep:
 # 3) Rational Analysis Tab
 # ---------------------------------
 with tab_rational:
-    st.subheader("🧾 Rational Analysis (Qwen Model)")
+    st.subheader("Rational Analysis (Qwen Model)")
 
     if "rationale" not in df.columns:
         st.info("No 'rationale' column found in the data.")
