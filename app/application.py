@@ -157,15 +157,6 @@ similarity_range = st.sidebar.slider(
     step=0.01,
 )
 
-# Similarity threshold for “high similarity” (used in confusion matrix)
-sim_threshold = st.sidebar.slider(
-    "Similarity threshold for 'High similarity' (Diagnostics)",
-    min_value=float(round(min_sim, 2)),
-    max_value=float(round(max_sim, 2)),
-    value=float(round((min_sim + max_sim) / 2, 2)),
-    step=0.01,
-)
-
 # Confidence threshold for "High-confidence Yes" in funnel
 conf_threshold = st.sidebar.slider(
     "Confidence threshold for High-confidence Yes (Funnel)",
@@ -358,53 +349,6 @@ This shows, for each program, how many Yes vs No responses it received in the cu
 # ---------------------------------
 with tab_deep:
     st.subheader("Deeper Insights")
-
-    # Confusion matrix (interest vs similarity threshold)
-    st.markdown("#### Confusion Matrix (Interest vs Similarity Threshold)")
-
-    diag_df = df.copy()
-    diag_df["high_sim"] = diag_df["similarity"] >= sim_threshold
-    diag_df["interest_yes"] = diag_df["answer_yes_no"] == "Yes"
-
-    diag_df["sim_label"] = diag_df["high_sim"].map(
-        {True: "High similarity", False: "Low similarity"}
-    )
-    diag_df["interest_label"] = diag_df["interest_yes"].map(
-        {True: "Yes", False: "No"}
-    )
-
-    conf_counts = (
-        diag_df.groupby(["sim_label", "interest_label"])
-        .size()
-        .reset_index(name="count")
-    )
-
-    conf_pivot = conf_counts.pivot(
-        index="sim_label", columns="interest_label", values="count"
-    ).fillna(0)
-
-    st.write("Confusion matrix table:")
-    st.dataframe(conf_pivot.astype(int))
-
-    conf_long = conf_counts.copy()
-    heat_conf = (
-        alt.Chart(conf_long)
-        .mark_rect()
-        .encode(
-            x=alt.X("interest_label:N", title="Interest (Yes/No)"),
-            y=alt.Y("sim_label:N", title="Similarity (High/Low)"),
-            color=alt.Color(
-                "count:Q",
-                title="Count",
-                scale=alt.Scale(scheme="orangered"),  # warmer than the others
-            ),
-            tooltip=["sim_label", "interest_label", "count"],
-        )
-        .properties(height=300)
-    )
-    st.altair_chart(heat_conf, use_container_width=True)
-
-    st.markdown("---")
 
     # Distribution of Similarity Scores (Yes vs No)
     st.markdown("#### Distribution of Similarity Scores (Yes vs No)")
