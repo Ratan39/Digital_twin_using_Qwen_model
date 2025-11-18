@@ -566,25 +566,18 @@ with tab_deep:
 
     st.markdown(
         """
-**1. Repair “almost-fit” programs (from the Confusion Matrix)**
 
-**Goal:** Turn “High similarity + No” into future Yes responses.
-
-
-**2.We can build a high-conversion outreach list (from the Interest Funnel)**
+**1.We can build a high-conversion outreach list (from the Interest Funnel)**
 
 **Goal:** Can derive a concrete list of “ready to convert” students.
 
 
----
-
-**3. Clarify value where students are unsure (Similarity vs Confidence)**
+**2. Clarify value where students are unsure (Similarity vs Confidence)**
 
 **Goal:** Increase confidence for students who appear to fit but don’t feel sure yet.
 
----
 
-**4. Design persona-based campaigns using the Heatmap**
+**3. Design persona-based campaigns using the Heatmap**
 
 **Goal:** Create 2–3 clear audience segments and a campaign plan for each.
 """
